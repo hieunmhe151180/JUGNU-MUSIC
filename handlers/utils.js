@@ -107,9 +107,9 @@ module.exports = async (client) => {
                 track.isLive
                   ? `LIVE STREAM`
                   : track.formattedDuration.split(` | `)[0]
-              }\` \`${track.user.tag}\``
+              }\` \`${track.user.tag}\``,
           )
-          .join(`\n`)
+          .join(`\n`),
       );
     }
 
@@ -123,7 +123,7 @@ module.exports = async (client) => {
             iconURL: guild.iconURL({ dynamic: true }),
           })
           .setColor(client.config.embed.color)
-          .setDescription(desc)
+          .setDescription(desc),
       );
     }
     return embeds;
@@ -162,12 +162,12 @@ module.exports = async (client) => {
         iconURL: client.user.displayAvatarURL(),
       })
       .setDescription(
-        `[Invite Now](${client.config.links.inviteURL}) • [Support Server](${client.config.links.DiscordServer}) • [Website](${client.config.links.Website})`
+        `[Invite Now](${client.config.links.inviteURL}) • [Support Server](${client.config.links.DiscordServer}) • [Website](${client.config.links.Website})`,
       )
       .setImage(
         guild.banner
           ? guild.bannerURL({ size: 4096 })
-          : "http://cdn.wallpaperinhd.net/wp-content/uploads/2018/11/02/Music-Background-Wallpaper-025.jpg"
+          : "http://cdn.wallpaperinhd.net/wp-content/uploads/2018/11/02/Music-Background-Wallpaper-025.jpg",
       )
       .setFooter({
         text: guild.name,
@@ -319,7 +319,7 @@ module.exports = async (client) => {
             name: "**Duration**",
             value: `\`${track.formattedDuration}\``,
             inline: true,
-          }
+          },
         )
         .setFooter(client.getFooter(track.user));
 
@@ -375,7 +375,7 @@ module.exports = async (client) => {
     const allcommands = client.mcommands.size;
     const allguilds = client.guilds.cache.size;
     const botuptime = `<t:${Math.floor(
-      Date.now() / 1000 - client.uptime / 1000
+      Date.now() / 1000 - client.uptime / 1000,
     )}:R>`;
     const buttons = [
       new ButtonBuilder()
@@ -387,7 +387,7 @@ module.exports = async (client) => {
           new ButtonBuilder()
             .setCustomId(cat)
             .setStyle(ButtonStyle.Secondary)
-            .setEmoji(emoji[cat])
+            .setEmoji(emoji[cat]),
         )
         .flat(),
     ].flat();
@@ -400,13 +400,11 @@ module.exports = async (client) => {
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
-      .setDescription(
-        `**An advanced Music System with Audio Filtering A unique Music Request System and much more!**`
-      )
+      .setDescription(`**Con bot nhỏ của cái làng nho nhỏ**`)
       .addFields([
         {
           name: `Stats`,
-          value: `>>> **:gear: \`${allcommands}\` Commands\n:file_folder: \`${allguilds}\` Guilds\n⌚️ ${botuptime} Uptime\n🏓 \`${client.ws.ping}\` Ping\nMade by [\`Fire Bird\`](https://discord.gg/PcUVWApWN3)**`,
+          value: `>>> **:gear: \`${allcommands}\` Commands\n:file_folder: \`${allguilds}\` Guilds\n⌚️ ${botuptime} Uptime\n🏓 \`${client.ws.ping}\` Ping\nMade by [\`DưaHấu\`](https://discord.gg/langsuyyy)**`,
         },
       ])
       .setFooter(client.getFooter(user));
@@ -444,13 +442,13 @@ module.exports = async (client) => {
                 new EmbedBuilder()
                   .setColor(client.config.embed.color)
                   .setTitle(
-                    `${emoji[directory]} ${directory} Commands ${emoji[directory]}`
+                    `${emoji[directory]} ${directory} Commands ${emoji[directory]}`,
                   )
                   .setDescription(
                     `>>> ${commands
                       .filter((cmd) => cmd.category === directory)
                       .map((cmd) => `\`${cmd.name}\``)
-                      .join(",  ")}`
+                      .join(",  ")}`,
                   )
                   .setThumbnail(client.user.displayAvatarURL())
                   .setFooter(client.getFooter(user)),

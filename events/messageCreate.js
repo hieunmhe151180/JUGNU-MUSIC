@@ -14,7 +14,7 @@ client.on("messageCreate", async (message) => {
   let settings = await client.music.get(message.guild.id);
   let prefix = settings?.prefix || botPrefix;
   let mentionprefix = new RegExp(
-    `^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
+    `^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`,
   );
   if (!mentionprefix.test(message.content)) return;
   const [, nprefix] = message.content.match(mentionprefix);
@@ -27,7 +27,7 @@ client.on("messageCreate", async (message) => {
           new EmbedBuilder()
             .setColor(client.config.embed.color)
             .setDescription(
-              ` ${emoji.SUCCESS} To See My All Commands Type  \`/help\` or \`${prefix}help\``
+              `To See My All Commands Type  \`/help\` or \`${prefix}help\``,
             ),
         ],
       });
@@ -45,36 +45,36 @@ client.on("messageCreate", async (message) => {
 
     if (
       !message.member.permissions.has(
-        PermissionsBitField.resolve(command.userPermissions)
+        PermissionsBitField.resolve(command.userPermissions),
       )
     ) {
       const needPerms = getPermissionName(command.userPermissions);
       return client.embed(
         message,
-        `You Don't Have \`${needPerms}\` Permission to Use \`${command.name}\` Command!!`
+        `You Don't Have \`${needPerms}\` Permission to Use \`${command.name}\` Command!!`,
       );
     } else if (
       !message.guild.members.me.permissions.has(
-        PermissionsBitField.resolve(command.botPermissions)
+        PermissionsBitField.resolve(command.botPermissions),
       )
     ) {
       const needPerms = getPermissionName(command.botPermissions);
       return client.embed(
         message,
-        `I Don't Have \`${needPerms}\` Permission to Run \`${command.name}\` Command!!`
+        `I Don't Have \`${needPerms}\` Permission to Run \`${command.name}\` Command!!`,
       );
     } else if (cooldown(message, command)) {
       return client.embed(
         message,
         ` You are On Cooldown , wait \`${cooldown(
           message,
-          command
-        ).toFixed()}\` Seconds`
+          command,
+        ).toFixed()}\` Seconds`,
       );
     } else if (command.inVoiceChannel && !voiceChannel) {
       return client.embed(
         message,
-        `${emoji.ERROR} You Need to Join Voice Channel`
+        `${emoji.ERROR} You Need to Join Voice Channel`,
       );
     } else if (
       command.inSameVoiceChannel &&
@@ -83,14 +83,14 @@ client.on("messageCreate", async (message) => {
     ) {
       return client.embed(
         message,
-        `${emoji.ERROR} You Need to Join ${botChannel} Voice Channel`
+        `${emoji.ERROR} You Need to Join ${botChannel} Voice Channel`,
       );
     } else if (command.Player && !queue) {
       return client.embed(message, `${emoji.ERROR} Music Not Playing`);
     } else if (command.djOnly && checkDJ) {
       return client.embed(
         message,
-        `${emoji.ERROR} You are not DJ and also you are not song requester..`
+        `${emoji.ERROR} You are not DJ and also you are not song requester..`,
       );
     } else {
       command.run(client, message, args, nprefix, queue);

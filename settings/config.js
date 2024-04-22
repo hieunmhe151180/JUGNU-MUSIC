@@ -2,7 +2,7 @@ const { Colors } = require("discord.js");
 
 const defaultSettings = {
   TOKEN: process.env.TOKEN || "BOT_TOKEN",
-  PREFIX: process.env.PREFIX || "BOT_PREFIX",
+  PREFIX: process.env.PREFIX || "ls",
   MONGO_URL: process.env.MONGO_URL || "MONGO_URL",
 };
 
@@ -112,7 +112,7 @@ const numberEmojis = [
 
 const slashSettings = {
   global: false,
-  guildIDS: ["903532162236694539"], // for slash command
+  guildIDS: ["1185600014957948979"], // for slash command
 };
 
 module.exports = {
